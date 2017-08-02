@@ -1,0 +1,23 @@
+one to many
+
+Hibernate: create table Author (AuthorId bigint not null auto_increment, age varchar(255), name varchar(255), book_id bigint, authors_ORDER integer, primary key (AuthorId))
+Hibernate: create table Book (bookId bigint not null auto_increment, author varchar(255), name varchar(255), primary key (bookId))
+Hibernate: alter table Author add constraint FKg0nq5qr1svmmax8ge9valtetc foreign key (book_id) references Book (bookId)
+Hibernate: insert into Book (author, name) values (?, ?)
+Hibernate: insert into Author (age, book_id, name) values (?, ?, ?)
+Hibernate: insert into Author (age, book_id, name) values (?, ?, ?)
+Hibernate: insert into Author (age, book_id, name) values (?, ?, ?)
+Hibernate: update Author set authors_ORDER=? where AuthorId=?
+Hibernate: update Author set authors_ORDER=? where AuthorId=?
+Hibernate: update Author set authors_ORDER=? where AuthorId=?
+
+many to many
+
+Hibernate: create table Doctor (doctorId bigint not null auto_increment, name varchar(255), type varchar(255), primary key (doctorId))
+Hibernate: create table Doctor_Patient (PatientId bigint not null, DoctorId bigint not null)
+Hibernate: create table Patient (patientId bigint not null auto_increment, fname varchar(255), lname varchar(255), primary key (patientId))
+Hibernate: alter table Doctor_Patient add constraint FK4f1esgexhlwk2qbsep2482mly foreign key (DoctorId) references Doctor (doctorId)
+Hibernate: alter table Doctor_Patient add constraint FKbdn7m1dcqcoc2gam5rv86sgs4 foreign key (PatientId) references Patient (patientId)
+Hibernate: insert into Doctor (name, type) values (?, ?)
+Hibernate: insert into Patient (fname, lname) values (?, ?)
+Hibernate: insert into Doctor_Patient (DoctorId, PatientId) values (?, ?)
